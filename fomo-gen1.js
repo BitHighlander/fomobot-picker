@@ -22,7 +22,7 @@ let analize_markets = async function(){
     let debug = true
     let debug1 = true
     try{
-        let summary = await bittrex.publicGetTicker('BTC-LTC')
+        let summary = await bittrex.publicGetMarketSummaries()
         //if(debug) console.log(tag,"summary: ",summary)
 
         let corpus = []
