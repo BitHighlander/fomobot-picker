@@ -12,7 +12,9 @@ const pubsubLib = require("redis")
 const views = require('./../modules/views.js')
 
 const exchanges = {}
-exchanges.bittrex  = require('./../exchanges/bittrex-client.js')
+const Bittrex = require('bittrex-wrapper');
+//const bittrex = new Bittrex('YOUR API KEY', 'YOUR API SECRET');
+const bittrex = new Bittrex();
 
 
 let analize_markets = async function(){
@@ -20,7 +22,7 @@ let analize_markets = async function(){
     let debug = true
     let debug1 = true
     try{
-        let summary = await exchanges.bittrex.getSummary()
+        let summary = await bittrex.publicGetTicker('BTC-LTC')
         //if(debug) console.log(tag,"summary: ",summary)
 
         let corpus = []
